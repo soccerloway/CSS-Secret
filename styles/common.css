@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f5f5d5;
+	margin: 0;
+	font-size: 20px;
+	font-family: Georgia, serif;
+}
+
+h1 {
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2 {
+	font-size: 1.6rem;
+}
+
+.content-container {
+	max-width: 60rem;
+	margin: 0 auto;
+}
+
+.desc {
+	background: #f5f2f0;
+	border: .3em solid #e0dfcc;
+	border-radius: 1em;
+	line-height: 1.4;
+	padding: 1em;
+	word-spacing: 10px;
+}

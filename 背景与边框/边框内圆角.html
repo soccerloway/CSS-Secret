@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>边框内圆角</title>
+	<link rel="stylesheet" href="../styles/common.css">
+	<style>
+		/*重叠元素实现*/
+		.outter {
+			padding: .5rem;
+			background: brown;
+			height: 5rem; 
+			width: 10rem;
+		}
+
+		.inner {
+			background: yellowgreen;
+			border-radius: .5rem;
+			height: 4rem;
+			width: 9rem;
+		}
+
+
+		/*单元素实现，毕竟我们只需要一个元素
+		  但是没有重叠元素灵活，
+		  重叠元素用了背景，可以随意改变边框的样式和纹理*/
+		.secret {
+			background: tan;
+			border-radius: .5rem;
+			box-shadow: 0 0 0 .5rem #665;
+			height: 4rem;
+			outline: .5rem solid #665;
+			width: 9rem;
+		}
+
+
+
+
+		
+	</style>
+</head>
+<body>
+	<h1>实现边框内圆角</h1>
+	<div class="content-container">
+		<h2>1.重叠元素实现</h2>
+		<div class="outter">
+			<div class="inner"></div>
+		</div>
+		<p class="desc">
+			解析：灵活的方法，虽然两个元素构成，但是扩展更加容易，背景样式上图就能改边框纹理。
+		</p>
+
+		<h2>2.单元素实现</h2>
+		<div class="secret"></div>
+			
+		<p class="desc">
+			解析：因为outline并不会跟着圆角出现，但box－shadow会跟着圆角出现，用outline和box－shadow共同填充出来的边框内圆角。<br />
+			不过，你发现了吗？元素的outline和shadow并不会占文档流中的空间，所以可能会造成布局上的混乱哟。<br />
+			注意一点，box-shadow的扩张值不需要等于描边宽度，因为在有些浏览器上会出现异常，只要足够填充圆角部分就足够了。
+		</p>
+	</div>
+	
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条纹背景</title>
+	<link rel="stylesheet" href="../styles/common.css">
+	<style>
+		.secret-h {
+			background: linear-gradient(to bottom, #fb3 50%, #58a 50%);
+			background-size: 100% 2rem;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-v {
+			background: linear-gradient(to right, #fb3 50%, #58a 50%);
+			background-size: 2rem 100%;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-x-error {
+			background: linear-gradient(45deg, #fb3 50%, #58a 50%);
+			background-size: 2rem 2rem;
+			border: .2rem solid red;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-x-valid {
+			background: linear-gradient(45deg,#fb3 25%, #58a 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+			background-size: 2rem 2rem;
+			border: .2rem solid green;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-x-better {
+			background: repeating-linear-gradient(45deg, #fb3, #fb3 1rem, #58a 0, #58a 2rem);
+			border: .2rem solid green;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-x-better-60 {
+			background: repeating-linear-gradient(135deg, #fb3, #fb3 1rem, #58a 0, #58a 2rem);
+			border: .2rem solid green;
+			height: 5rem;
+			width: 10rem;
+		}
+
+		.secret-x-like {
+			background: #58a;
+			background-image: repeating-linear-gradient(30deg,
+								hsla(0, 0%, 100%, .1),
+								hsla(0, 0%, 100%, .1) 1rem,
+								transparent 0, transparent 2rem);
+
+			height: 5rem;
+			width: 10rem;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>条纹背景</h1>
+	<div class="content-container">
+		<h2>1.横向条纹背景</h2>
+		<div class="secret-h"></div>
+
+		<p class="desc">
+			解析：当背景渐变色的多个色标具有相同的位置，它们会产生一个无限小的过渡区域。<br />
+			从效果上看，颜色会在那个位置突变，而不是一个平滑的渐变过程。
+		</p>
+		<p class="desc">
+			用css背景渐变创建的条纹，还可以通过background相关的属性来调整其尺寸，方向等。
+			再平铺即可实现条纹背景啦。
+		</p>
+
+		<h2>2.垂直条纹实例</h2>
+		<div class="secret-v"></div>
+		<p class="desc">
+			原理同横向条纹，仅仅是渐变方向改变和背景尺寸的x，y尺寸互换。
+		</p>
+
+		<h2>3.斜向条纹实例</h2>
+		<div class="secret-x-error"></div>
+		<p class="desc">
+			解析：同理之前做法，将渐变方向设置为45度，背景尺寸下x，y均为1rem。<br/>
+			得到的结果就是上图，显然，这并不是我们所希望得到的图像。<br/>
+			原因是，我们仅仅是把每个“贴片”旋转了45度，并不是整个重复的背景都旋转了。
+		</p>
+
+		<div class="secret-x-valid"></div>
+		<p class="desc">
+			解析：每个贴片中需要有4条条纹，平铺组合起来才会组成我们想要得到的斜向条纹。
+			但是此时的条纹宽度不等于之前横向和竖向的宽度，需要根据计算得出需要设置的background-size的值(勾股定理)。
+		</p>
+
+		<h2>4.更好的斜向条纹</h2>
+		<div class="secret-x-better"></div>
+
+		<p class="desc">
+			background: repeating-linear-gradient(45deg, #fb3, #fb3 1rem, #58a 0, #58a 2rem)
+		</p>
+
+		<p class="desc">
+			如果我们还需要做30度或者60度的斜向条纹呢？麻烦的计算。幸运的是，还有一个更好的方法来创建斜向条纹。
+			linear-gradient和radial-gradient都各有一个循环式的加强版: repeating-linear-gradient 和 repeating-radial-gradient.
+		</p>
+		
+		<div class="secret-x-better-60"></div>
+		<p class="desc">
+			background: repeating-linear-gradient(135deg, #fb3, #fb3 1rem, #58a 0, #58a 2rem)
+		</p>
+		<p class="desc">
+			要得到不角度只需要修改角度值就可以了。很方便吧～
+		</p>
+
+		<h2>灵活的同色系条纹</h2>
+		<div class="secret-x-like"></div>
+		<p class="desc">
+			<code>
+				background-image: repeating-linear-gradient(30deg,
+								hsla(0, 0%, 100%, .1),
+								hsla(0, 0%, 100%, .1) 1rem,
+								transparent 0, transparent 2rem);
+			</code>
+		</p>
+
+		<p class="desc">
+			解析：这种实现是采用了背景颜色加半透明白色条纹组合成的同色系条纹背景。<br/>
+				这样做的好处就是，如果需要修改颜色，只需要修改背景颜色就好了，修改之后依旧是同色系的条纹背景。
+		</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+</body>
+</html>
